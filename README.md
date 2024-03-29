@@ -14,7 +14,7 @@ First, we need to create a ROS2 galactic workspace that will be mounted inside t
 ```
 mkdir -p cosemap_ws/src/
 cd cosemap_ws/src/
-git clone **TO DO**
+git clone https://github.com/aitronik/cose-map.git
 ```
 ### Build docker image
 To build the cosemap docker image:
@@ -141,7 +141,7 @@ Currently, COSE-MAP is being developed and tested within an isolated docker envi
 If all the dependencies are met, clone the repository inside the *src/* directory of your ROS2 galactic workspace:
 ```
 cd /path-to-your-workspace/src/
-git clone **TO DO**
+git clone https://github.com/aitronik/cose-map.git
 ```
 and then build the workspace:
 ```
