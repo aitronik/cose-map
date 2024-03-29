@@ -1,0 +1,10 @@
+FROM cosemap_pcl
+# ENV DEBIAN_FRONTEND=noninteractive
+ 
+COPY tmp/mariadb-connector-cpp-1.0.3-ubuntu-focal-amd64.tar.gz /home
+COPY tmp/mariadb_repo_setup /home
+COPY scripts /home/scripts
+
+WORKDIR /home
+RUN  sh /home/scripts/install_mariadb.sh
+ 

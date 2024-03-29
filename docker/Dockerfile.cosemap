@@ -1,0 +1,10 @@
+FROM cosemap_ros
+# ENV DEBIAN_FRONTEND=noninteractive
+ 
+# COPY tmp/mariadb-connector-cpp-1.1.3-ubuntu-focal-amd64.tar.gz /home
+# COPY scripts /home/scripts
+
+# WORKDIR /home
+# RUN  sh /home/scripts/install_mariadb.sh
+
+WORKDIR /home/cosemap/ws

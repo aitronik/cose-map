@@ -1,0 +1,4 @@
+database_settings:
+  host: "your_static_ip"                  # example: "192.168.0.1" 
+  port: 3306                              # default mariadb port = 3306
+  database_name: "semantic_database"

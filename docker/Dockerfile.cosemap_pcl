@@ -1,0 +1,10 @@
+FROM cosemap_opencv
+# ENV DEBIAN_FRONTEND=noninteractive
+
+# OPENCV
+    # Install build tools, build dependencies and python
+
+COPY scripts /home/scripts
+COPY tmp/pcl-1.13.1.tar.gz /home/cosemap
+
+RUN  sh /home/scripts/install_pcl.sh 

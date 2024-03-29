@@ -1,0 +1,8 @@
+FROM cosemap_mariadb
+# ENV DEBIAN_FRONTEND=noninteractive
+
+ 
+COPY scripts /home/scripts
+
+RUN  sh /home/scripts/install_ros.sh
+ 

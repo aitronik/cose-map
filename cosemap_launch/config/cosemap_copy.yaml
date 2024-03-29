@@ -1,0 +1,76 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+    labels_file_path: "/home/cosemap/ws/src/cosemap/cosemap_launch/labels/labels.txt"
+    model_file_path:  "/home/cosemap/ws/src/cosemap/cosemap_launch/models/yolov8m-seg.onnx"
+    camera_frame_id: "base_link"
+    map_frame_id: "map"
+
+/semantic_pcl_node:
+  ros__parameters:
+    
+    rgb_topic: "camera0/rgb"
+    depth_topic: "camera0/depth_raw"
+    ##INTRINSICS
+    depth_fx: 425.4238586425781 
+    depth_fy: 425.4238586425781 
+    depth_cx: 429.1470642089844 
+    depth_cy: 237.8537139892578 
+    
+    rgb_fx: 606.8109741210938 
+    rgb_fy: 606.7197875976562 
+    rgb_cx: 418.16290283203125 
+    rgb_cy: 244.93008422851562 
+
+    inference_confidence_threshold: 0.6
+    depth_pixel_skip: 4
+    depth_max_distance: 4.5
+    real-sem_colors: False # true for real colors / false for semantic colors in point cloud. This influences octomap colors
+    point_cloud_topic: "pcl" 
+    include_background_points: true 
+    inference_image_topic: "rgb_inference"
+    
+
+    ## OBJECT POINT CLOUDS FILTERS
+    outliers_removal: true
+    # The number of neighbors to analyze for each point
+    outliers_removal_mean_k : 100
+    # All points who have a distance larger than x standard deviation 
+    # of the mean distance to the query point will be marked as outliers and removed.
+    outliers_removal_std_dev_thresh: 1.0
+
+    # clustering of objects point clouds
+    cluster_objects_pcl: true
+    # The cluster tolerance is the radius for the k-NN searching, used to find the candidate points.
+    cluster_tolerance: 0.10
+    # min_cluster_size = pcl.size() * cluster_min_size_ratio 
+    cluster_min_size_ratio: 0.15
+
+
+    source: 2 # 0: TUM_dataset; 1: gazebo;  2: realSense  
+
+/semantic_octomap_server_node:
+  ros__parameters:
+    use_sim_time: true
+    resolution: 0.1
+    sensor_model.max_range: 4.5
+    filter_speckles: True
+    filter_ground_plane: False
+    filter_ground_semantics: True
+    publish_free_space: False
+    compress_map: True #make prune
+    latch: False  # True: all publishers activated / False: every publisher is activated only if it has subscribers
+    pcl_queue_size: 20
+    base_frame_id: "base_link"
+
+
+/semantic_database_node:
+  ros__parameters:
+    # database access parameters
+    url: "jdbc:mariadb://192.168.10.12:3306/semantic_database"
+    user: "test_user"  
+    password: "password" 
+    truncate_tables_on_exit: true
+    loop_rate: 50.0
+    upload_classes: true
+    iou_thresh: 0.6

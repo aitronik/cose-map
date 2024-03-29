@@ -1,0 +1,6 @@
+.vscode
+docker/tmp
+ground_truth
+cosemap_launch/launch/ground_truth.launch.py
+cosemap_launch/config/ground_truth.yaml
+cosemap_launch/models/*

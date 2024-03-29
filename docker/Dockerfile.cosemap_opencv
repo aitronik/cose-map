@@ -1,0 +1,10 @@
+FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
+# ENV DEBIAN_FRONTEND=noninteractive
+
+ 
+COPY scripts /home/scripts
+COPY tmp/opencv /home/cosemap/opencv
+
+
+RUN  sh /home/scripts/install_opencv.sh 
+

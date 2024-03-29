@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="octomap_server" exec="semantic_octomap_server_node" name="semantic_octomap_server" output="screen">
+        <param from="$(find-pkg-share semantic_release)/config/realsense_bag_mapping.yaml"/>
+
+		<!-- data source to integrate (PointCloud2) -->
+		<remap from="cloud_in" to="pcl" />
+	</node>
+</launch>
